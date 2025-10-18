@@ -132,13 +132,12 @@ const ProjectDetails = ({ projectId, onBack }) => {
         "Smooth animations and transitions",
         "Downloadable CV/Resume (PDF)",
       ],
-      github: "https://github.com/tuusuario/ecommerce",
+      github: "https://github.com/KevCast1604/portfolio",
       images: [
-        "https://via.placeholder.com/800x600/1f2937/06b6d4?text=Homepage",
-        "https://via.placeholder.com/800x600/1f2937/06b6d4?text=Product+Page",
-        "https://via.placeholder.com/800x600/1f2937/06b6d4?text=Cart",
-        "https://via.placeholder.com/800x600/1f2937/06b6d4?text=Checkout",
-        "https://via.placeholder.com/800x600/1f2937/06b6d4?text=Admin+Panel",
+        "images/portfolio-project1.png",
+        "images/portfolio-project2.png",
+        "images/portfolio-project3.png",
+        "images/portfolio-project4.png",
       ],
     },
   };

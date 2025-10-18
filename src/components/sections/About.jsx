@@ -8,7 +8,7 @@ const About = () => {
         <div className="flex-shrink-0 mb-8 md:mb-0">
           <div className="w-40 h-40 rounded-full bg-gray-800 border-4 border-cyan-400 overflow-hidden mx-auto shadow-lg">
             <img
-              src="../../public/images/profile.jpg"
+              src="images/profile.jpg"
               alt="Kevin Castañeda"
               className="w-full h-full object-cover"
             />

@@ -21,7 +21,7 @@ const Projects = ({ onViewProject }) => {
     },
     {
       id: 2,
-      title: "Growlytics (In Progress)",
+      title: "Growlytics",
       description:
         "A personal finance simulator that helps users track expenses, plan budgets, and forecast savings using interactive charts and scenarios.",
       tech: [
@@ -32,7 +32,8 @@ const Projects = ({ onViewProject }) => {
         "TailwindCSS",
         "Authentication",
       ],
-      github: "#",
+      image: "/images/grow-6.png",
+      github: "https://github.com/KevCast1604/Growlythics",
     },
     {
       id: 3,
@@ -73,7 +74,7 @@ const Projects = ({ onViewProject }) => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-20 px-4 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <h2 className="text-4xl font-bold text-white text-center mb-4">

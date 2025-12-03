@@ -16,7 +16,7 @@ const Skills = () => {
     {
       title: "Database",
       icon: <Database size={28} />,
-      skills: ["MySQL", "PostgreSQL", "SQL Server"],
+      skills: ["MySQL", "PostgreSQL", "SQL Server", "Firebase"],
     },
   ];
 

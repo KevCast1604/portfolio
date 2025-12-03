@@ -144,6 +144,50 @@ const ProjectDetails = ({ projectId, onBack }) => {
         "images/portfolio-project4.png",
       ],
     },
+    5: {
+      title: "FondoVivienda",
+      description: "A university project to help estate companies in housing stallments.",
+      longDescription: `FondoVivienda is a university project developed as a web application to simulate and manage mortgage payment plans under 
+      Peru's "Nuevo Crédito MiVivienda" program. Designed for real estate companies, this tool enables sales agents to provide potential clients 
+      with detailed and personalized credit simulations. The system implements the French amortization method and supports critical configurations 
+      such as multi-currency transactions (PEN/USD), both effective and nominal interest rates with customizable capitalization, and the application 
+      of total or partial grace periods. It also includes the option to apply for the "Techo Propio" housing bonus. Key features include mandatory 
+      user authentication, management of client socio-economic data, and detailed real estate offerings.  
+      The application performs essential financial calculations like Net Present Value (NPV) and Internal 
+      Rate of Return (IRR) for the loans,  ensuring compliance with Peruvian financial transparency regulations.`,
+      tech: ['Vue.js', 'CSS3', 'Firebase', 'Authentication', 'NoSQL'],
+      features: [
+        "User authentication (Login/Password)",
+        "French amortization payment plan calculation",
+        "Support for PEN and USD currencies",
+        "Handles nominal and effective interest rates",
+        "Configuration of total or partial grace periods",
+        "Integration with 'Techo Propio' bonus",
+        "Client and real estate offer management",
+        "Calculation of NPV and IRR",
+      ],
+      github: 'https://github.com/KevCast1604/FondoVivienda',
+      live: 'https://mivivienda-application.web.app/',
+      images: [
+        "images/fondovivienda-1.png",
+        "images/fondovivienda-2.png",
+        "images/fondovivienda-3.png",
+        "images/fondovivienda-4.png",
+        "images/fondovivienda-5.png",
+        "images/fondovivienda-6.png",
+        "images/fondovivienda-7.png",
+        "images/fondovivienda-8.png",
+        "images/fondovivienda-9.png",
+        "images/fondovivienda-10.png",
+        "images/fondovivienda-11.png",
+        "images/fondovivienda-12.png",
+        "images/fondovivienda-13.png",
+        "images/fondovivienda-14.png",
+        "images/fondovivienda-15.png",
+        "images/fondovivienda-16.png",
+        "images/fondovivienda-17.png"
+      ],
+    }
   };
 
   const project = projectData[projectId] || projectData[1];

@@ -55,14 +55,15 @@ const Projects = ({ onViewProject }) => {
       live: "#",
       image: "/images/portfolio-project.png",
     },
-    // {
-    //   id: 5,
-    //   title: 'Weather Dashboard',
-    //   description: 'Real-time weather application with forecast and location-based data.',
-    //   tech: ['Vue', 'OpenWeather API', 'Chart.js'],
-    //   github: '#',
-    //   live: '#'
-    // },
+    {
+       id: 5,
+       title: 'FondoVivienda',
+       description: 'A university project to help estate companies in housing stallments.',
+       tech: ['Vue.js', 'CSS3', 'Firebase', 'Authentication', 'NoSQL'],
+       github: 'https://github.com/KevCast1604/FondoVivienda',
+       live: 'https://mivivienda-application.web.app/',
+       image: "/images/fondovivienda-9.png",
+     }
     // {
     //   id: 6,
     //   title: 'Blog CMS',

@@ -18,36 +18,35 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-0">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10 px-4">
+      <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Main heading con animación de fade in */}
         <div className="my-8">
           <h1 
-            className={`text-5xl md:text-7xl font-bold text-white mb-4 transition-all md:mt-0 mt-24 duration-1000 ${
+            className={`text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 transition-all md:mt-0 mt-24 duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
             }`}
           >
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-blue-700 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-blue-700 bg-clip-text text-transparent animate-gradient">
               Kevin Castañeda
             </span>
           </h1>
           <div 
-            className={`h-1 w-32 bg-gradient-to-r from-cyan-400 to-blue-700 mx-auto mb-6 transition-all duration-1000 delay-200 ${
+            className={`h-1 w-32 sm:w-40 md:w-64 bg-gradient-to-r from-cyan-400 to-blue-700 mx-auto mb-6 transition-all duration-1000 delay-200 ${
               isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-            }`}
-          ></div>
+            }`}></div>
         </div>
 
         {/* Subtitle con animación escalonada */}
         <div 
-          className={`text-xl md:text-2xl mb-8 flex flex-col md:flex-row gap-2 justify-center items-center transition-all duration-1000 delay-300 ${
+          className={`text-xl sm:text-xl md:text-2xl mb-8 flex flex-col md:flex-row gap-2 justify-center items-center transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -87,7 +86,7 @@ const Hero = () => {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             }}
-            className="group px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white rounded-lg transition-all duration-300 font-semibold shadow-lg hover:shadow-cyan-500/50 hover:scale-105 transform"
+            className="group px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white rounded-lg transition-all duration-300 font-semibold shadow-lg"
           >
             <span className="flex items-center gap-2">
               Get In Touch

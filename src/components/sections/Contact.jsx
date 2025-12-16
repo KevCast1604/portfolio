@@ -99,7 +99,7 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-gray-900 px-4">
       <div className="mt-16 max-w-6xl mx-auto">
         {/* Section Title */}
-        <h2 className="text-4xl font-bold text-white text-center mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
           Let's Work Together
         </h2>
         <div className="h-1 w-20 mb-16 bg-cyan-400 mx-auto"></div>
@@ -107,30 +107,40 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">
               Contact Information
             </h3>
             <div className="space-y-4 mb-8">
               {contactInfo.map((info, idx) => (
                 <div
-                  key={idx}
-                  className="flex items-start gap-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-cyan-400 transition-colors"
-                >
-                  <span className="text-cyan-400 mt-1">{info.icon}</span>
-                  <div>
-                    <p className="text-gray-400 text-sm mb-1">{info.title}</p>
-                    {info.link ? (
-                      <a
-                        href={info.link}
-                        className="text-white font-medium hover:text-cyan-400 transition-colors"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="text-white font-medium">{info.value}</p>
-                    )}
-                  </div>
-                </div>
+  key={idx}
+  className="
+    flex flex-col gap-3 p-4 bg-gray-800 rounded-lg border border-gray-700
+    hover:border-cyan-400 transition-colors
+    sm:flex-row sm:items-start sm:gap-4
+  "
+>
+  <span className="text-cyan-400 sm:mt-1">{info.icon}</span>
+
+  <div className="min-w-0">
+    <p className="text-gray-400 text-sm mb-1">{info.title}</p>
+
+    {info.link ? (
+      <a
+        href={info.link}
+        className="
+          text-white font-medium hover:text-cyan-400 transition-colors
+          break-words
+        "
+      >
+        {info.value}
+      </a>
+    ) : (
+      <p className="text-white font-medium break-words">{info.value}</p>
+    )}
+  </div>
+</div>
+
               ))}
             </div>
 
@@ -145,7 +155,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gray-800 rounded-lg p-8 border border-gray-700">
+<div className="bg-gray-800 rounded-lg border border-gray-700 mx-auto w-full p-5 sm:p-8">
             <h3 className="text-2xl font-bold text-white mb-6">
               Send me a message
             </h3>
@@ -169,9 +179,9 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-gray-900 border ${
-                    errors.name ? "border-red-500" : "border-gray-700"
-                  } rounded-lg text-white focus:border-cyan-400 focus:outline-none transition-colors`}
+                  className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-gray-900 border ${
+  errors.name ? "border-red-500" : "border-gray-700"
+} rounded-lg text-white focus:border-cyan-400 focus:outline-none transition-colors`}
                   placeholder="Your Name"
                 />
                 {errors.name && (

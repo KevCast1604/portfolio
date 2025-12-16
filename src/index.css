@@ -3,4 +3,5 @@
 
 body {
   font-family: 'Zalando Sans', sans-serif;
+  overflow-x: hidden;
 }

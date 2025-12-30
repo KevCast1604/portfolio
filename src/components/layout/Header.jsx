@@ -9,8 +9,8 @@ const Header = () => {
   const navRef = useRef(null);
   const mobilePanelRef = useRef(null);
 
-  const navItems = useMemo(() => ["About", "Skills", "Projects", "Contact"], []);
-  const sections = useMemo(() => ["about", "skills", "projects", "contact"], []);
+  const navItems = useMemo(() => ["About", "Experience", "Skills", "Projects", "Contact"], []);
+  const sections = useMemo(() => ["about", "experience",  "skills", "projects", "contact"], []);
 
   // 1) Scroll state (throttled with rAF)
   useEffect(() => {

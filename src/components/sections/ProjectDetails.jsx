@@ -48,7 +48,7 @@ const ProjectDetails = () => {
         ],
       },
       2: {
-        title: "Growlytics",
+        title: "Growlythics",
         description:
           "A personal finance simulator that helps users track expenses, plan budgets, and forecast savings using interactive charts and scenarios.",
         longDescription: `Growlytics it's a web application that help you to planify your finances (incomes,
@@ -63,9 +63,8 @@ const ProjectDetails = () => {
           "Different scenarios (optimist, conservative, realistic)",
           "Interactive graphics with Recharts",
           "Complete and intuitive dashboard",
-          "Download your data as CSV/PDF files",
         ],
-        github: "https://github.com/tuusuario/ecommerce",
+        github: "https://github.com/KevCast1604/Growlythics",
         images: [
           "/images/grow-1.png",
           "/images/grow-2.png",
@@ -184,6 +183,34 @@ const ProjectDetails = () => {
           "/images/fondovivienda-17.png",
         ],
       },
+      6: {
+        title: "AutoMonitor",
+        description:
+          "An Telegram Bot that helps to see changes in a public API url of products.",
+        longDescription: ` AutoMonitor is a telegram bot that can see changes in a publig API URL of products,
+        It can send alerts in telegram with information of what products are removed or added, with their information
+        (name of product, price). The FrontEnd show in a table, all the notifications, with information that was
+        removed or added in a JSON raw. The backend was created using Python + FastAPI and SQLite for Local Storage, but in
+        deployment, you can see PostgreSQL.`,
+        tech: ["React", "TailwindCSS", "Typescript", "Python", "FastAPI", "SQLite", "Telegram", "Automation"],
+        features: [
+          "Automatic Notifications on Telegram",
+          "UI with all the notifications sent in a table",
+          "Detect changes every TEN seconds.",
+          "API created using Swagger to see with more details the changes.",
+          "Created with a modern tech stack and good practices in the structure of the files.",
+          "Telegram Bot easy to use, writing only /start.",
+        ],
+        github: "https://github.com/KevCast1604/AutoMonitor",
+        images: [
+          "/images/automonitor-1.jpg",
+          "/images/automonitor-2.jpg",
+          "/images/automonitor-3.jpg",
+          "/images/automonitor-4.jpg",
+          "/images/automonitor-5.jpg",
+          "/images/automonitor-6.jpeg",
+        ],
+      }
     }),
     []
   );

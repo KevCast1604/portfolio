@@ -7,6 +7,7 @@ import Projects from "../components/sections/Projects";
 import Contact from "../components/sections/Contact";
 import Footer from "../components/layout/Footer";
 import CVButton from "../components/layout/CVButton.jsx";
+import Experience from "../components/sections/Experience.jsx";
 
 
 const HomePage = ({ onViewProject }) => (
@@ -14,6 +15,7 @@ const HomePage = ({ onViewProject }) => (
     <Header />
     <Hero />
     <About />
+    <Experience />
     <Skills />
     <Projects onViewProject={onViewProject} />
     <Contact />

@@ -16,7 +16,7 @@ const Skills = memo(() => {
     {
       title: "Database",
       icon: <Database className="w-6 h-6" />,
-      skills: ["PostgreSQL", "MySQL", "Firebase", "Supabase"],
+      skills: ["SQL", "Firebase", "Supabase"],
     },
     {
       title: "Tooling",
@@ -25,7 +25,7 @@ const Skills = memo(() => {
     },
   ];
 
-  const focus = ["Next.js", "Supabase", "Gemini API"];
+  const focus = ["Automation", "Python", "FastAPI", "Django"];
 
   return (
     <section id="skills" className="relative py-24 px-4 overflow-hidden bg-gradient-to-bfrom-gray-900/80 via-gray-950 

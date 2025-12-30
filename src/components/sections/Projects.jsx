@@ -18,7 +18,7 @@ const Projects = () => {
       },
       {
         id: 2,
-        title: "Growlytics",
+        title: "Growlythics",
         description:
           "A personal finance simulator that helps users track expenses, plan budgets, and forecast savings using interactive charts and scenarios.",
         tech: ["Next.js", "TypeScript", "Firebase", "TailwindCSS", "Authentication"],
@@ -52,6 +52,14 @@ const Projects = () => {
         github: "https://github.com/KevCast1604/FondoVivienda",
         live: "https://mivivienda-application.web.app/",
         image: "/images/fondovivienda-9.png",
+      },
+      {
+        id: 6,
+        title: "AutoMonitor",
+        description: "An Telegram Bot that helps to see changes in a public API url of products.",
+        tech: ["TailwindCSS", "React", "Typescript", "Python", "FastAPI", "SQLite", "Telegram", "Automation"],
+        github: "https://github.com/KevCast1604/AutoMonitor",
+        image: "/images/automonitor-0.jpg",
       },
     ],
     []

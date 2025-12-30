@@ -9,7 +9,6 @@ import Footer from "../components/layout/Footer";
 import CVButton from "../components/layout/CVButton.jsx";
 import Experience from "../components/sections/Experience.jsx";
 
-
 const HomePage = ({ onViewProject }) => (
   <>
     <Header />

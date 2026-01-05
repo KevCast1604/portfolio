@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export default function LoadingScreen({
   show = true,
@@ -9,6 +9,11 @@ export default function LoadingScreen({
   const [visible, setVisible] = useState(show);
   const [closing, setClosing] = useState(false);
   const [progress, setProgress] = useState(0);
+  const onDoneRef = useRef(onDone);
+
+  useEffect(() => {
+    onDoneRef.current = onDone;
+  }, [onDone]);
 
   // Cuando show cambia a true, reinicia todo
   useEffect(() => {
@@ -16,6 +21,13 @@ export default function LoadingScreen({
       setVisible(true);
       setClosing(false);
       setProgress(0);
+    } else {
+      // Si show pasa a false (por lógica externa), forzamos el cierre
+      setClosing(true);
+      const t = setTimeout(() => {
+        setVisible(false);
+      }, 350);
+      return () => clearTimeout(t);
     }
   }, [show]);
 
@@ -25,6 +37,7 @@ export default function LoadingScreen({
 
     const start = performance.now();
     let raf = 0;
+    let timer = 0;
 
     const tick = (now) => {
       const elapsed = now - start;
@@ -43,16 +56,19 @@ export default function LoadingScreen({
         setClosing(true);
 
         // espera a que termine el fade-out y luego notifica/desmonta
-        setTimeout(() => {
+        timer = setTimeout(() => {
           setVisible(false);
-          if (typeof onDone === "function") onDone();
+          if (typeof onDoneRef.current === "function") onDoneRef.current();
         }, 350); // igual al duration del fade
       }
     };
 
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [show, duration, onDone]);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(timer);
+    };
+  }, [show, duration]);
 
   if (!visible) return null;
 

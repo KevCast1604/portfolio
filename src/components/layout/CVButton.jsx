@@ -4,14 +4,12 @@ import { Download } from 'lucide-react';
 const CVButton = () => {
   return (
     <a
-      href="/resume.pdf"
+      href="/public/cv_en.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed right-4 bottom-4 z-40 group
-        /* Desktop */
+      className="!fixed right-4 bottom-4 z-40 group
         md:px-6 md:py-3 md:bg-gray-900 md:rounded-md md:border md:border-gray-700 
         md:hover:border-cyan-400 md:transition-all md:duration-300
-        /* Mobile */
         md:shadow-none shadow-lg
         "
       aria-label="Download CV"

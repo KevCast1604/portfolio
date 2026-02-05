@@ -10,6 +10,7 @@ import {
 import HomePage from "./HomePage";
 import ProjectDetails from "../components/sections/ProjectDetails";
 import LoadingScreen from "../components/ui/LoadingScreen";
+import CVButton from "../components/layout/CVButton";
 
 const MIN_LOADING_TIME = 1200;
 
@@ -57,6 +58,7 @@ const AppRoutes = () => {
           </Routes>
         </div>
       )}
+      {!loading && <CVButton />}
     </>
   );
 };

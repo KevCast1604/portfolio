@@ -114,28 +114,27 @@ const ProjectDetails = () => {
         ],
       },
       4: {
-        title: "Portfolio",
+        title: "Starv AI (IN PROGRESS)",
         description:
-          "It's my portfolio created with TailwindCSS and React to show my projects and skills.",
-        longDescription: `It's my personal portfolio to show my projects and skills that I have been developing over time.
-      The portfolio is built with React and styled with TailwindCSS to ensure a modern and responsive design. It includes sections for my bio, 
-      skills, projects, and contact information.`,
-        tech: ["React", "TailwindCSS", "Vite"],
+          "A End to End SaaS with GenAI that helps you to generate different types of content for small business",
+        longDescription: `Starv AI is a web application (SaaS) that helps small businesses and enterpreneurs to generate different types of content like Whatsapp Scripts, Instagram
+        Captions, Facebook Posts, Answer to DMs, Brainstormings, and more. It also includes includes a feature to personalize the content based on the user's business. It uses Gemini API for the AI features and Supabase for the backend services.`,
+        tech: ["Next.js", "TypeScript", "TailwindCSS", "Gemini API", "Supabase", "Prompt Engineering", "Stripe"],
         features: [
-          "Modern and responsive design",
-          "Trending technologies like React and TailwindCSS",
-          "Easy navigation through sections",
-          "Contact form for inquiries",
-          "Project showcase with detailed descriptions",
-          "Smooth animations and transitions",
-          "Downloadable CV/Resume (PDF)",
+          "Generate different types of content related with user's business",
+          "Suscription plans to access premium features",
+          "Policies and Terms of Service pages",
+          "Full Landing Page about what is Starv AI",
+          "Dashboard to manage suscriptions and content generation",
+          "Documentation about Starv AI",
+          "Authentication with Supabase",
+          "Payment processing with Stripe",
+          "Responsive design",
+          "A End to End application with a real business logic",
         ],
-        github: "https://github.com/KevCast1604/portfolio",
+        github: "#",
         images: [
-          "/images/portfolio-project1.png",
-          "/images/portfolio-project2.png",
-          "/images/portfolio-project3.png",
-          "/images/portfolio-project4.png",
+          
         ],
       },
       5: {

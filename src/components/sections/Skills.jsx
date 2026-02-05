@@ -11,7 +11,7 @@ const Skills = memo(() => {
     {
       title: "Backend",
       icon: <Server className="w-6 h-6" />,
-      skills: ["Java", "Spring Boot", "Python", "FastAPI", "REST APIs", "JWT/Auth"],
+      skills: ["Java", "Spring Boot", "Python", "FastAPI", "Django", "REST APIs", "JWT/Auth"],
     },
     {
       title: "Database",
@@ -21,11 +21,11 @@ const Skills = memo(() => {
     {
       title: "Tooling",
       icon: <Wrench className="w-6 h-6" />,
-      skills: ["Git/GitHub", "Docker", "Postman", "Vercel"],
+      skills: ["Git/GitHub", "Docker", "Postman", "Vercel", "Google AI Studio"],
     },
   ];
 
-  const focus = ["Automation", "Python", "FastAPI", "Django"];
+  const focus = ["Python", "Django", "Prompt Engineering", "AI Agents"];
 
   return (
     <section id="skills" className="relative py-24 px-4 overflow-hidden bg-gradient-to-bfrom-gray-900/80 via-gray-950 

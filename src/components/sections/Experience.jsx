@@ -15,6 +15,20 @@ const EXPERIENCES = [
       "Create views and components using a modern stack (Next.js + TailwindCSS).",
     ],
     stack: ["Next.js", "TailwindCSS", "PHP", "Laravel", "MySQL"]
+  },
+  {
+    role: "Full Stack Developer Internship",
+    company: "Antarcold",
+    type: "Internship",
+    start: "Jan. 2026",
+    end: "Present",
+    location: "Remote",
+    highlights: [
+      "Create modules and sections in a inventory using Python and Django.",
+      "Create stock dashboard and items module using Boostrap and JQuery",
+      "I brought the project to 95% completion.",
+    ],
+    stack: ["Python", "Django", "PostgreSQL","Bootstrap", "JQuery"]
   }
 ];
 

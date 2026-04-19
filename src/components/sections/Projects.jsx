@@ -37,12 +37,12 @@ const Projects = () => {
       },
       {
         id: 4,
-        title: "Starv AI (In Progress)",
-        description: "A End to End SaaS created for small business using GenAI that helps you to generate different types of content to improve sales.",
-        tech: ["Next.js", "TypeScript", "TailwindCSS", "Gemini API", "Supabase", "Prompt Engineering", "Stripe"],
+        title: "Starv Forge",
+        description: "A SaaS platform that helps small businesses generate high-quality marketing content using AI. It streamlines content creation, optimization, and management, enabling businesses to enhance their online presence and sales efforts efficiently.",
+        tech: ["Next.js", "TypeScript", "TailwindCSS", "Gemini API", "Supabase", "Prompt Engineering", "Creem"],
         github: "#",
-        live: "#",
-        image: "",
+        live: "https://forge.starvco.com",
+        image: "/images/forge.jpg",
       },
       {
         id: 5,

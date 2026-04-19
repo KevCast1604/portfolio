@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { createPortal } from "react-dom";
 import { Github, ExternalLink, ArrowLeft, ArrowRight, X } from "lucide-react";
 import Footer from "../layout/Footer";
 import { useNavigate, useParams } from "react-router-dom";
@@ -114,12 +115,12 @@ const ProjectDetails = () => {
         ],
       },
       4: {
-        title: "Starv AI (IN PROGRESS)",
+        title: "Starv Forge",
         description:
-          "A End to End SaaS with GenAI that helps you to generate different types of content for small business",
-        longDescription: `Starv AI is a web application (SaaS) that helps small businesses and enterpreneurs to generate different types of content like Whatsapp Scripts, Instagram
+          "A SaaS platform that helps small businesses generate high-quality marketing content using AI. It streamlines content creation, optimization, and management, enabling businesses to enhance their online presence and sales efforts efficiently.",
+        longDescription: `Starv Forge is a web application (SaaS) that helps small businesses and enterpreneurs to generate different types of content like Whatsapp Scripts, Instagram
         Captions, Facebook Posts, Answer to DMs, Brainstormings, and more. It also includes includes a feature to personalize the content based on the user's business. It uses Gemini API for the AI features and Supabase for the backend services.`,
-        tech: ["Next.js", "TypeScript", "TailwindCSS", "Gemini API", "Supabase", "Prompt Engineering", "Stripe"],
+        tech: ["Next.js", "TypeScript", "TailwindCSS", "Gemini API", "Supabase", "Prompt Engineering", "Creem"],
         features: [
           "Generate different types of content related with user's business",
           "Suscription plans to access premium features",
@@ -132,9 +133,17 @@ const ProjectDetails = () => {
           "Responsive design",
           "A End to End application with a real business logic",
         ],
-        github: "#",
+        live: "https://forge.starvco.com",
         images: [
-          
+          "/images/forge-1.jpg",
+          "/images/forge-2.jpg",
+          "/images/forge-3.jpg",
+          "/images/forge-4.jpg",
+          "/images/forge-5.jpg",
+          "/images/forge-6.jpg",
+          "/images/forge-7.jpg",
+          "/images/forge-8.jpg",
+          "/images/forge-9.jpg",
         ],
       },
       5: {
@@ -375,9 +384,9 @@ const ProjectDetails = () => {
       </div>
 
       {/* Image Modal with arrows + better close */}
-      {selectedIndex !== null && (
+      {selectedIndex !== null && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 lg:p-8"
           onClick={closeImage}
           role="dialog"
           aria-modal="true"
@@ -389,15 +398,16 @@ const ProjectDetails = () => {
               closeImage();
             }}
             className="
-              absolute top-4 right-4 inline-flex items-center justify-center
-              w-11 h-11 rounded-full border border-white/10 bg-white/5
-              text-white hover:bg-white/10 transition-colors
+              absolute top-6 right-6 inline-flex items-center justify-center
+              w-12 h-12 rounded-full border border-white/10 bg-white/5
+              text-white hover:bg-white/10 transition-all duration-300
               focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60
+              hover:rotate-90 z-[10000]
             "
             aria-label="Close"
             type="button"
           >
-            <X size={22} />
+            <X size={28} />
           </button>
 
           {/* Left arrow */}
@@ -407,16 +417,17 @@ const ProjectDetails = () => {
               prevImage();
             }}
             className="
-              absolute left-3 sm:left-6 top-1/2 -translate-y-1/2
+              absolute left-4 sm:left-10 top-1/2 -translate-y-1/2
               inline-flex items-center justify-center
-              w-11 h-11 rounded-full border border-white/10 bg-white/5
-              text-white hover:bg-white/10 transition-colors
+              w-12 h-12 rounded-full border border-white/10 bg-white/5
+              text-white hover:bg-white/10 transition-all duration-300
               focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60
+              active:scale-95 z-[10000]
             "
             aria-label="Previous image"
             type="button"
           >
-            <ArrowLeft size={22} />
+            <ArrowLeft size={28} />
           </button>
 
           {/* Right arrow */}
@@ -426,36 +437,42 @@ const ProjectDetails = () => {
               nextImage();
             }}
             className="
-              absolute right-3 sm:right-6 top-1/2 -translate-y-1/2
+              absolute right-4 sm:right-10 top-1/2 -translate-y-1/2
               inline-flex items-center justify-center
-              w-11 h-11 rounded-full border border-white/10 bg-white/5
-              text-white hover:bg-white/10 transition-colors
+              w-12 h-12 rounded-full border border-white/10 bg-white/5
+              text-white hover:bg-white/10 transition-all duration-300
               focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60
+              active:scale-95 z-[10000]
             "
             aria-label="Next image"
             type="button"
           >
-            <ArrowRight size={22} />
+            <ArrowRight size={28} />
           </button>
 
           {/* Image */}
           <div
-            className="relative max-w-6xl w-full"
+            className="relative max-w-5xl w-full flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={project.images[selectedIndex]}
-              alt="Preview"
-              className="w-full max-h-[80vh] object-contain rounded-xl border border-white/10"
-              draggable={false}
-            />
-
-            {/* Counter */}
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-sm text-gray-200 bg-black/40 px-3 py-1.5 rounded-full border border-white/10">
-              {selectedIndex + 1} / {project.images.length}
+            <div className="relative group/modal">
+              <img
+                src={project.images[selectedIndex]}
+                alt="Preview"
+                className="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                draggable={false}
+              />
+              
+              {/* Counter overlay */}
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-sm text-gray-400 bg-black/60 backdrop-blur-md px-6 py-2 rounded-full border border-white/10 flex items-center gap-3">
+                <span className="text-white font-bold">{selectedIndex + 1}</span>
+                <span className="w-px h-3 bg-white/20" />
+                <span>{project.images.length}</span>
+              </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <Footer />

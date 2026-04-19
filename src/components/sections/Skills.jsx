@@ -25,7 +25,7 @@ const Skills = memo(() => {
     },
   ];
 
-  const focus = ["Python", "Django", "Prompt Engineering", "AI Agents"];
+  const focus = ["RAG Systems", "GenAI", "Agentic AI", "Prompt Engineering"];
 
   return (
     <section id="skills" className="relative py-24 px-4 overflow-hidden bg-gradient-to-bfrom-gray-900/80 via-gray-950 

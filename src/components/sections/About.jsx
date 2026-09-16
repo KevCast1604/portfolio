@@ -1,112 +1,163 @@
 import React from "react";
-import { Code2, Database, Rocket, ArrowRight } from "lucide-react";
+import { Code2, Database, Rocket, ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 const About = () => {
   const highlights = [
     {
-      icon: <Code2 className="w-5 h-5" />,
+      index: "01",
+      icon: <Code2 className="w-4 h-4" />,
       title: "Clean Frontend",
-      desc: "Interfaces claras, responsive y pensadas para el usuario.",
+      desc: "Responsive, user-centric interfaces engineered with ergonomic fidelity and performance.",
     },
     {
-      icon: <Database className="w-5 h-5" />,
+      index: "02",
+      icon: <Database className="w-4 h-4" />,
       title: "Solid Backend",
-      desc: "APIs, autenticación, bases de datos y arquitectura escalable.",
+      desc: "Scalable services, resilient APIs, robust authentication, and relational data architecture.",
     },
     {
-      icon: <Rocket className="w-5 h-5" />,
-      title: "Real Products",
-      desc: "Proyectos completos, con lógica real y enfoque en negocio.",
+      index: "03",
+      icon: <Rocket className="w-4 h-4" />,
+      title: "Production Products",
+      desc: "End-to-end applications designed for real operational constraints, business goals, and rigor.",
     },
   ];
 
   return (
-    <section id="about" className=" relative py-24 px-4 bg-gradient-to-bfrom-gray-900/80 via-gray-950 
-    to-gray-950">
-      <div className="max-w-6xl mx-auto">
-        {/* Title */}
-        <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            About Me
-          </h2>
-          <div className="h-1 w-20 bg-cyan-400 mx-auto mt-4" />
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+    <section
+      id="about"
+      className="relative bg-[#fafaf9] dark:bg-[#08080a] text-neutral-900 dark:text-neutral-100 transition-colors duration-500 py-28 sm:py-36 lg:py-44 border-t border-neutral-200/70 dark:border-neutral-800/60 overflow-hidden"
+    >
+      {/* Structural Architectural Guide Lines */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+        <div className="absolute top-0 left-6 sm:left-12 lg:left-24 bottom-0 w-px bg-neutral-200/50 dark:bg-neutral-800/40" />
+        <div className="absolute top-0 right-6 sm:right-12 lg:right-24 bottom-0 w-px bg-neutral-200/50 dark:bg-neutral-800/40 hidden sm:block" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-24">
+        
+        {/* Section Header Meta Indicator */}
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-12 sm:pb-16 border-b border-neutral-200/80 dark:border-neutral-800/80">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-2">
+              [02 // BIOGRAPHY & DISCIPLINE]
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-neutral-950 dark:text-neutral-50">
+              About Me.
+            </h2>
+          </div>
+          <p className="font-mono text-xs tracking-wider uppercase text-neutral-500 dark:text-neutral-400 max-w-sm">
             I don’t just write code — I build solutions that make sense.
           </p>
         </div>
 
-        {/* Main Card */}
-        <div className="relative rounded-2xl border border-gray-800 bg-gray-900/40 backdrop-blur-md overflow-hidden">
-          {/* Decorative glow */}
-          <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 bg-cyan-500/10 blur-3xl rounded-full" />
-          <div className="pointer-events-none absolute -bottom-24 -right-24 w-80 h-80 bg-blue-500/10 blur-3xl rounded-full" />
-
-          <div className="relative p-6 md:p-10 grid md:grid-cols-[220px_1fr] gap-10 items-center">
-            {/* Profile image */}
-            <div className="flex justify-center md:justify-start">
-              <div className="w-44 h-44 rounded-2xl bg-gray-800 border border-gray-700 overflow-hidden shadow-xl">
+        {/* Editorial Asymmetric Spread (No Generic Floating Cards) */}
+        <div className="mt-14 sm:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* Left Column: Portrait & Identity Metadata */}
+          <div className="lg:col-span-4 flex flex-col items-start">
+            {/* Architectural Photo Frame */}
+            <div className="relative w-full max-w-sm group">
+              <div className="relative overflow-hidden aspect-[4/5] bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800">
                 <img
-                  src="images/profile.jpg"
+                  src="/images/profile.jpg"
                   alt="Kevin Castañeda"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   loading="lazy"
                 />
+                
+                {/* Tech Corner Coordinates */}
+                <div className="absolute top-3 left-3 px-2 py-1 bg-neutral-950/80 text-neutral-300 backdrop-blur-sm font-mono text-[10px] tracking-widest uppercase">
+                  ID: KC_1604
+                </div>
+                <div className="absolute bottom-3 right-3 px-2 py-1 bg-neutral-950/80 text-neutral-300 backdrop-blur-sm font-mono text-[10px] tracking-widest uppercase">
+                  FIG. 01
+                </div>
+              </div>
+
+              {/* Offset Accent Hairline */}
+              <div className="absolute -bottom-2 -right-2 w-full h-full border border-neutral-400/40 dark:border-neutral-700/50 pointer-events-none -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+            </div>
+
+            {/* Profile Spec Rail */}
+            <div className="w-full max-w-sm mt-8 pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80 font-mono text-xs space-y-3">
+              <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
+                <span className="uppercase tracking-wider">ROLE</span>
+                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">Full Stack Developer</span>
+              </div>
+              <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
+                <span className="uppercase tracking-wider">EDUCATION</span>
+                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">Software Engineering</span>
+              </div>
+              <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
+                <span className="uppercase tracking-wider">LOCATION</span>
+                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">Remote / LATAM (Perú)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Narrative & Structured Technical Highlights */}
+          <div className="lg:col-span-8 flex flex-col justify-between">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-4">
+                // EXECUTIVE SUMMARY
+              </span>
+              
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-neutral-950 dark:text-neutral-50 leading-[1.15]">
+                Hi, I’m Kevin. I transform complex concepts into deterministic, production-grade web systems.
+              </h3>
+
+              <div className="mt-8 space-y-5 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+                <p>
+                  I’m a Full Stack Developer with a deep interest in backend architecture, distributed workflows, and scalable systems. I concentrate on projects where engineering rigor solves authentic operational challenges and where granular architectural details matter.
+                </p>
+                <p>
+                  I construct complete applications spanning enterprise authentication, distributed databases, resilient APIs, and reactive interfaces. My approach prioritizes continuous refinement, deterministic testing, and pushing codebases to enterprise production quality.
+                </p>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="text-center md:text-left">
-              <span className="inline-block text-sm text-cyan-300 bg-cyan-500/10 border border-cyan-400/30 px-4 py-1.5 rounded-full mb-4">
-                Full Stack Developer · Software Engineering Student
+            {/* Structural Technical Highlights (Clean Index Rules, No Cards) */}
+            <div className="mt-12 sm:mt-16 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
+              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-6">
+                [PILLARS OF EXECUTION]
               </span>
 
-              <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-                Hi, I’m Kevin. I enjoy turning ideas into reliable web applications.
-              </h3>
-
-              <p className="text-gray-300 mt-4 leading-relaxed max-w-2xl">
-                I’m a Full Stack Developer with a strong interest in backend
-                architecture and scalable systems. I like working on projects
-                where technology solves real problems and where details matter.
-              </p>
-
-              <p className="text-gray-400 mt-3 leading-relaxed max-w-2xl">
-                I’ve built complete applications covering authentication,
-                databases, APIs and modern UIs. I’m always learning, improving
-                my stack and pushing my projects closer to production-level
-                quality.
-              </p>
-
-              {/* Highlights */}
-              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="divide-y divide-neutral-200/70 dark:divide-neutral-800/70">
                 {highlights.map((h) => (
                   <div
                     key={h.title}
-                    className="rounded-xl border border-gray-800 bg-gray-950/40 p-5 hover:border-cyan-400/50 transition-colors"
+                    className="group py-6 first:pt-2 flex flex-col sm:flex-row sm:items-start justify-between gap-4 transition-colors duration-300"
                   >
-                    <div className="flex items-center gap-3 text-cyan-300">
-                      <span className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-400/20">
-                        {h.icon}
+                    <div className="flex items-center gap-4 sm:w-1/3">
+                      <span className="font-mono text-xs text-neutral-400 dark:text-neutral-500">
+                        {h.index}
                       </span>
-                      <p className="text-white font-semibold">{h.title}</p>
+                      <div className="p-2 bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 group-hover:border-neutral-400 dark:group-hover:border-neutral-600 transition-colors">
+                        {h.icon}
+                      </div>
+                      <span className="font-mono text-sm font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 group-hover:text-black dark:group-hover:text-white transition-colors">
+                        {h.title}
+                      </span>
                     </div>
-                    <p className="text-gray-400 text-sm mt-3 leading-relaxed">
+
+                    <p className="sm:w-2/3 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8 sm:pl-0">
                       {h.desc}
                     </p>
                   </div>
                 ))}
               </div>
+            </div>
 
-              {/* CTA */}
-              <div className="mt-10 flex justify-center md:justify-start">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 text-white font-semibold transition-colors"
-                >
-                  View My Projects
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
+            {/* Section Action Anchor */}
+            <div className="mt-12 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between">
+              <a
+                href="#projects"
+                className="group inline-flex items-center gap-3 px-6 py-3.5 text-xs sm:text-sm font-mono uppercase tracking-wider bg-neutral-950 text-neutral-50 hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98]"
+              >
+                <span>View My Projects</span>
+                <ArrowUpRight size={15} className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </div>
           </div>
         </div>

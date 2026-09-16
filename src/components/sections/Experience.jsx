@@ -1,168 +1,177 @@
 import React from "react";
-import { Briefcase, Calendar, MapPin, Sparkles, Terminal, Cpu, Database } from "lucide-react";
+import { ArrowUpRight, MapPin, Calendar, Terminal, Sparkles, Cpu, Layers } from "lucide-react";
 
 const EXPERIENCES = [
   {
-    role: "Founder - AI System Engineer",
+    index: "01",
+    role: "Founder & AI Systems Engineer",
     company: "Starv",
-    type: "Freelance",
-    start: "Oct. 2025",
-    end: "Present",
+    type: "Founder",
+    period: "OCT. 2025 — PRESENT",
     location: "Remote",
-    icon: <Sparkles className="w-5 h-5" />,
+    icon: Sparkles,
     highlights: [
-      "Developing AI-powered solutions for various clients.",
-      "Researching and implementing cutting-edge AI technologies.",
-      "Creating products with GenAI, RAG Systems and Agentic AI.",
+      "Developing and architecting end-to-end AI-powered autonomous systems for client deployments.",
+      "Researching, benchmarking, and integrating cutting-edge foundation models and evaluation harnesses.",
+      "Designing production applications driven by Generative AI, RAG architectures, and multi-agent workflows.",
     ],
-    stack: ["Python", "FastAPI", "Next", "TailwindCSS", "Typescript", "Gemini", "RAG", "GenAI", "PostgreSQL"]
+    stack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "TypeScript", "Gemini", "RAG", "Agentic AI", "PostgreSQL"],
   },
   {
-    role: "Software Developer Internship",
+    index: "02",
+    role: "Software Developer Intern",
     company: "NHL Decoraciones Comercial",
     type: "Internship",
-    start: "Nov. 2025",
-    end: "March. 2026",
+    period: "NOV. 2025 — MAR. 2026",
     location: "Remote",
-    icon: <Terminal className="w-5 h-5" />,
+    icon: Terminal,
     highlights: [
-      "Refactoring legacy code to optimize performance and maintainability.",
-      "Architecting robust API Endpoints using PHP and Laravel.",
-      "Developing responsive UI components with Next.js and TailwindCSS.",
+      "Refactoring legacy monolith codebases to optimize throughput, maintainability, and clean architecture.",
+      "Architecting reliable, validated REST API endpoints utilizing PHP and Laravel.",
+      "Developing high-performance, accessible client-side UI components with Next.js and Tailwind CSS.",
     ],
-    stack: ["Next.js", "TailwindCSS", "PHP", "Laravel", "MySQL"]
+    stack: ["Next.js", "Tailwind CSS", "PHP", "Laravel", "MySQL"],
   },
   {
-    role: "Full Stack Developer Internship",
+    index: "03",
+    role: "Full Stack Developer Intern",
     company: "Antarcold",
     type: "Internship",
-    start: "March. 2026",
-    end: "Present",
+    period: "MAR. 2026 — PRESENT",
     location: "Remote",
-    icon: <Cpu className="w-5 h-5" />,
+    icon: Cpu,
     highlights: [
-      "Building inventory management modules using Python and Django.",
-      "Designing real-time stock dashboards with Bootstrap and JQuery.",
-      "Achieved 95% project completion through agile methodologies.",
+      "Engineering real-time inventory management and supply chain modules using Python and Django.",
+      "Designing responsive stock monitoring dashboards with dynamic event updates.",
+      "Delivered 95% project milestone velocity by adhering to strict agile sprint cycles.",
     ],
-    stack: ["Python", "Django", "PostgreSQL", "Bootstrap", "JQuery"]
-  }
+    stack: ["Python", "Django", "PostgreSQL", "Bootstrap", "jQuery"],
+  },
 ];
-
-const TypeBadge = ({ type }) => {
-  const styles = {
-    "Full-time": "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-    "Part-time": "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    Freelance: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
-    Internship: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-    Project: "bg-slate-500/10 text-slate-400 border-white/10",
-  };
-
-  return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] uppercase tracking-wider font-bold border backdrop-blur-md ${styles[type] || styles.Project}`}>
-      <Sparkles className="w-3 h-3" />
-      {type}
-    </span>
-  );
-};
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-32 px-4 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-cyan-600/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[120px]" />
+    <section
+      id="experience"
+      className="relative bg-[#fafaf9] dark:bg-[#08080a] text-neutral-900 dark:text-neutral-100 transition-colors duration-500 py-28 sm:py-36 lg:py-44 border-t border-neutral-200/70 dark:border-neutral-800/60 overflow-hidden"
+    >
+      {/* Structural Architectural Guide Lines */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+        <div className="absolute top-0 left-6 sm:left-12 lg:left-24 bottom-0 w-px bg-neutral-200/50 dark:bg-neutral-800/40" />
+        <div className="absolute top-0 right-6 sm:right-12 lg:right-24 bottom-0 w-px bg-neutral-200/50 dark:bg-neutral-800/40 hidden sm:block" />
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="mb-20 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-3 mb-4">
-             <div className="h-px w-8 bg-cyan-500/50" />
-             <span className="text-cyan-400 uppercase tracking-[0.2em] text-xs font-bold">Career Path</span>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-24">
+        
+        {/* Section Header Meta */}
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-12 sm:pb-16 border-b border-neutral-200/80 dark:border-neutral-800/80">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-2">
+              [03 // TRACK RECORD & CHRONOLOGY]
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-neutral-950 dark:text-neutral-50">
+              Experience.
+            </h2>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-            Professional <span className="text-gray-500">Experience</span>
-          </h2>
+          <p className="font-mono text-xs tracking-wider uppercase text-neutral-500 dark:text-neutral-400 max-w-sm">
+            Proven trajectory in software delivery, architecture, and agentic engineering.
+          </p>
         </div>
 
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Main Vertical Line */}
-          <div className="absolute left-0 sm:left-8 top-2 bottom-0 w-px bg-gradient-to-b from-cyan-500/50 via-blue-500/20 to-transparent" />
-
-          <div className="space-y-16">
-            {EXPERIENCES.map((exp, idx) => (
-              <div key={`${exp.company}-${idx}`} className="relative pl-8 sm:pl-20 group">
-                
-                {/* Timeline Node */}
-                <div className="absolute left-[-12px] sm:left-[20px] top-0 transition-transform duration-500 group-hover:scale-110">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-xl bg-[#030712] border-2 border-gray-800 flex items-center justify-center z-20 relative group-hover:border-cyan-500 transition-colors">
-                    <div className="text-gray-500 group-hover:text-cyan-400 transition-colors">
-                       {exp.icon || <Briefcase size={16} />}
-                    </div>
-                  </div>
-                  {/* Outer Glow */}
-                  <div className="absolute inset-0 bg-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-
-                {/* Content Card */}
-                <article className="relative">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        {/* Ledger Rows (Asymmetric Editorial, No Generic Cards) */}
+        <div className="divide-y divide-neutral-200/80 dark:divide-neutral-800/80">
+          {EXPERIENCES.map((exp) => {
+            const IconComponent = exp.icon;
+            return (
+              <article
+                key={`${exp.company}-${exp.index}`}
+                className="group py-12 sm:py-16 transition-colors duration-300"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                  
+                  {/* Left Meta Column: Chronology, Type, Organization */}
+                  <div className="lg:col-span-4 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-white text-xl sm:text-2xl font-bold group-hover:text-cyan-400 transition-colors">
-                        {exp.role}
-                      </h3>
-                      <div className="flex items-center gap-2 text-gray-400 mt-1 font-medium">
-                        <span className="text-gray-200">{exp.company}</span>
-                        <span className="text-gray-700">•</span>
-                        <span className="flex items-center gap-1.5 text-xs">
-                          <MapPin size={12} className="text-cyan-500/70" /> {exp.location}
+                      <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-neutral-400 dark:text-neutral-500 uppercase mb-3">
+                        <span>[{exp.index}]</span>
+                        <span>//</span>
+                        <span className="text-neutral-700 dark:text-neutral-300 font-semibold">{exp.period}</span>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl sm:text-2xl font-medium tracking-tight text-neutral-900 dark:text-neutral-100">
+                          {exp.company}
+                        </span>
+                      </div>
+
+                      <div className="mt-3 flex flex-wrap items-center gap-2 font-mono text-xs text-neutral-500 dark:text-neutral-400">
+                        <span className="inline-flex items-center gap-1">
+                          <MapPin size={12} className="text-neutral-400" />
+                          {exp.location}
+                        </span>
+                        <span>·</span>
+                        <span className="px-2 py-0.5 border border-neutral-300 dark:border-neutral-700 text-[10px] uppercase tracking-wider text-neutral-600 dark:text-neutral-300">
+                          {exp.type}
                         </span>
                       </div>
                     </div>
-                    <div className="flex flex-col items-start sm:items-end gap-2">
-                       <TypeBadge type={exp.type} />
-                       <span className="flex items-center gap-2 text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded border border-white/5">
-                         <Calendar size={12} /> {exp.start} — {exp.end}
-                       </span>
-                    </div>
                   </div>
 
-                  <div className="p-6 rounded-2xl glass border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
-                    <ul className="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
-                      {exp.highlights.map((h, i) => (
-                        <li key={i} className="flex gap-3 items-start group/li">
-                          <div className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-500/50 group-hover/li:bg-cyan-400 group-hover/li:scale-125 transition-all" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {/* Right Column: Role Title, Highlights & Tech Ledger */}
+                  <div className="lg:col-span-8">
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-neutral-950 dark:text-neutral-50 group-hover:text-black dark:group-hover:text-white transition-colors">
+                        {exp.role}
+                      </h3>
+                      <ArrowUpRight
+                        size={18}
+                        className="text-neutral-400 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </div>
 
-                    {/* Stack Chips */}
-                    <div className="mt-8 flex flex-wrap gap-2">
-                      {exp.stack.map((s) => (
-                        <span key={s} className="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-gray-900 border border-gray-800 text-gray-500 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-default">
-                          {s}
-                        </span>
+                    {/* Bullet Highlights */}
+                    <div className="mt-6 space-y-3">
+                      {exp.highlights.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-3 text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                          <span className="font-mono text-xs text-neutral-400 dark:text-neutral-500 mt-1 select-none">
+                            —
+                          </span>
+                          <span>{item}</span>
+                        </div>
                       ))}
                     </div>
+
+                    {/* Stack Tokens as a Monospace Minimalist Ledger */}
+                    <div className="mt-8 pt-6 border-t border-neutral-200/50 dark:border-neutral-800/50">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-3">
+                        TECH STACK / ARTIFACTS
+                      </span>
+                      <div className="flex flex-wrap gap-x-3 gap-y-2">
+                        {exp.stack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="font-mono text-xs px-2.5 py-1 text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 transition-colors duration-200 hover:border-neutral-400 dark:hover:border-neutral-600"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
                   </div>
-                </article>
-              </div>
-            ))}
-          </div>
+
+                </div>
+              </article>
+            );
+          })}
         </div>
-      </div>
 
-      <style jsx>{`
-        .glass {
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-      `}</style>
+        {/* Section Footer Coordinates */}
+        <div className="pt-12 border-t border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-neutral-400 dark:text-neutral-600">
+          <span>ARCHIVE RECORD: 2025—PRESENT</span>
+        </div>
+
+      </div>
     </section>
   );
 }

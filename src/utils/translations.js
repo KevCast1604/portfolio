@@ -3,7 +3,7 @@ export const translations = {
     common: {
       cvLabel: "CV // RESUME",
       cvAria: "Download Curriculum Vitae (PDF)",
-      loading: "Loading...",
+      loading: "Loading",
     },
     nav: {
       about: "About",
@@ -422,7 +422,7 @@ export const translations = {
     common: {
       cvLabel: "CV // CURRÍCULUM",
       cvAria: "Descargar Curriculum Vitae (PDF)",
-      loading: "Cargando...",
+      loading: "Cargando",
     },
     nav: {
       about: "Sobre mí",

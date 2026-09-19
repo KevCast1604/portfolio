@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function LoadingScreen({
   show = true,
-  text = "Loading...",
-  duration = 1200, 
-  onDone,     
+  duration = 1000,
+  onDone,
 }) {
+  const { t } = useLanguage();
+  const commonT = t("common") || {};
+
   const [visible, setVisible] = useState(show);
   const [closing, setClosing] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -15,23 +18,22 @@ export default function LoadingScreen({
     onDoneRef.current = onDone;
   }, [onDone]);
 
-  // Cuando show cambia a true, reinicia todo
+  // Handle visibility state changes
   useEffect(() => {
     if (show) {
       setVisible(true);
       setClosing(false);
       setProgress(0);
     } else {
-      // Si show pasa a false (por lógica externa), forzamos el cierre
       setClosing(true);
-      const t = setTimeout(() => {
+      const timer = setTimeout(() => {
         setVisible(false);
-      }, 350);
-      return () => clearTimeout(t);
+      }, 300);
+      return () => clearTimeout(timer);
     }
   }, [show]);
 
-  // Simula progreso "llenándose" (suave y con pequeño easing)
+  // Smooth progress calculation using easeOutCubic
   useEffect(() => {
     if (!show) return;
 
@@ -41,25 +43,22 @@ export default function LoadingScreen({
 
     const tick = (now) => {
       const elapsed = now - start;
-      const t = Math.min(elapsed / duration, 1);
+      const progressFraction = Math.min(elapsed / duration, 1);
 
-      // easing suave (easeOutCubic)
-      const eased = 1 - Math.pow(1 - t, 3);
-
-      // porcentaje 0..100
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - progressFraction, 3);
       setProgress(Math.floor(eased * 100));
 
-      if (t < 1) {
+      if (progressFraction < 1) {
         raf = requestAnimationFrame(tick);
       } else {
-        // al terminar, inicia cierre suave
         setClosing(true);
-
-        // espera a que termine el fade-out y luego notifica/desmonta
         timer = setTimeout(() => {
           setVisible(false);
-          if (typeof onDoneRef.current === "function") onDoneRef.current();
-        }, 350); // igual al duration del fade
+          if (typeof onDoneRef.current === "function") {
+            onDoneRef.current();
+          }
+        }, 300);
       }
     };
 
@@ -74,34 +73,36 @@ export default function LoadingScreen({
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden transition-opacity duration-350 ${
-        closing ? "opacity-0" : "opacity-100"
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#08080a] text-neutral-100 select-none transition-opacity duration-300 ease-out ${
+        closing ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
+      role="progressbar"
+      aria-valuenow={progress}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="Cargando portafolio"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-950 to-gray-950" />
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 left-1/3 w-[34rem] h-[34rem] bg-cyan-500/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 right-1/3 w-[34rem] h-[34rem] bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
+      <div className="flex flex-col items-center gap-6 w-full max-w-xs px-6">
+        {/* Name Identity */}
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <span className="font-mono text-xs uppercase tracking-widest text-neutral-300">
+            Kevin Castañeda
+          </span>
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-md px-6 text-center">
-        <p className="text-white text-2xl font-semibold tracking-wide">
-          {text}
-        </p>
-        {/* Progress bar */}
-        <div className="mt-8">
-          <div className="h-2 w-full rounded-full bg-gray-800/60 border border-gray-700 overflow-hidden">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-blue-700 transition-[width] duration-150 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+        {/* Minimal Hairline Progress Bar */}
+        <div className="w-44 sm:w-56 h-[1px] bg-neutral-800 relative overflow-hidden">
+          <div
+            className="h-full bg-neutral-200 transition-all duration-75 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
 
-          <div className="mt-3 text-xs text-gray-400">
-            {progress}%
-          </div>
+        {/* Status Label & Percentage */}
+        <div className="flex items-center justify-between w-44 sm:w-56 font-mono text-[11px] text-neutral-500 uppercase tracking-wider">
+          <span>{commonT.loading || "Loading"}</span>
+          <span className="tabular-nums">{progress}%</span>
         </div>
       </div>
     </div>

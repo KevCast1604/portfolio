@@ -11,14 +11,11 @@ import HomePage from "./HomePage";
 import ProjectDetails from "../components/sections/ProjectDetails";
 import LoadingScreen from "../components/ui/LoadingScreen";
 import CVButton from "../components/layout/CVButton";
-import { useLanguage } from "../context/LanguageContext";
 
 const MIN_LOADING_TIME = 1200;
 
 const AppRoutes = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
-  const commonT = t("common") || {};
 
   const [appReady, setAppReady] = useState(false);
   const [minTimePassed, setMinTimePassed] = useState(false);
@@ -45,7 +42,6 @@ const AppRoutes = () => {
     <>
       <LoadingScreen
         show={loading}
-        text={commonT.loading || "Loading..."}
         duration={MIN_LOADING_TIME}
       />
 
@@ -67,7 +63,7 @@ const AppRoutes = () => {
 };
 
 const AppRouter = () => (
-  <div className="bg-gray-900 min-h-screen">
+  <div className="bg-[#fafaf9] dark:bg-[#08080a] min-h-screen">
     <BrowserRouter>
       <AppRoutes />
     </BrowserRouter>

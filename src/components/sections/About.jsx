@@ -1,27 +1,12 @@
 import React from "react";
-import { Code2, Database, Rocket, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { Code2, Database, Rocket, ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 const About = () => {
-  const highlights = [
-    {
-      index: "01",
-      icon: <Code2 className="w-4 h-4" />,
-      title: "Clean Frontend",
-      desc: "Responsive, user-centric interfaces engineered with ergonomic fidelity and performance.",
-    },
-    {
-      index: "02",
-      icon: <Database className="w-4 h-4" />,
-      title: "Solid Backend",
-      desc: "Scalable services, resilient APIs, robust authentication, and relational data architecture.",
-    },
-    {
-      index: "03",
-      icon: <Rocket className="w-4 h-4" />,
-      title: "Production Products",
-      desc: "End-to-end applications designed for real operational constraints, business goals, and rigor.",
-    },
-  ];
+  const { t } = useLanguage();
+  const aboutT = t("about");
+
+  const icons = [<Code2 className="w-4 h-4" />, <Database className="w-4 h-4" />, <Rocket className="w-4 h-4" />];
 
   return (
     <section
@@ -40,14 +25,14 @@ const About = () => {
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-12 sm:pb-16 border-b border-neutral-200/80 dark:border-neutral-800/80">
           <div>
             <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-2">
-              [02 // BIOGRAPHY & DISCIPLINE]
+              {aboutT.meta}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-neutral-950 dark:text-neutral-50">
-              About Me.
+              {aboutT.title}
             </h2>
           </div>
           <p className="font-mono text-xs tracking-wider uppercase text-neutral-500 dark:text-neutral-400 max-w-sm">
-            I don’t just write code — I build solutions that make sense.
+            {aboutT.tagline}
           </p>
         </div>
 
@@ -71,7 +56,7 @@ const About = () => {
                   ID: KC_1604
                 </div>
                 <div className="absolute bottom-3 right-3 px-2 py-1 bg-neutral-950/80 text-neutral-300 backdrop-blur-sm font-mono text-[10px] tracking-widest uppercase">
-                  FIG. 01
+                  {aboutT.figure}
                 </div>
               </div>
 
@@ -82,16 +67,16 @@ const About = () => {
             {/* Profile Spec Rail */}
             <div className="w-full max-w-sm mt-8 pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80 font-mono text-xs space-y-3">
               <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
-                <span className="uppercase tracking-wider">ROLE</span>
-                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">Full Stack Developer</span>
+                <span className="uppercase tracking-wider">{aboutT.roleLabel}</span>
+                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">{aboutT.roleValue}</span>
               </div>
               <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
-                <span className="uppercase tracking-wider">EDUCATION</span>
-                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">Software Engineering</span>
+                <span className="uppercase tracking-wider">{aboutT.eduLabel}</span>
+                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">{aboutT.eduValue}</span>
               </div>
               <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
-                <span className="uppercase tracking-wider">LOCATION</span>
-                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">Remote / LATAM (Perú)</span>
+                <span className="uppercase tracking-wider">{aboutT.locLabel}</span>
+                <span className="text-neutral-900 dark:text-neutral-200 font-medium text-right">{aboutT.locValue}</span>
               </div>
             </div>
           </div>
@@ -100,31 +85,27 @@ const About = () => {
           <div className="lg:col-span-8 flex flex-col justify-between">
             <div>
               <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-4">
-                // EXECUTIVE SUMMARY
+                {aboutT.summaryHeader}
               </span>
               
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-neutral-950 dark:text-neutral-50 leading-[1.15]">
-                Hi, I’m Kevin. I transform complex concepts into deterministic, production-grade web systems.
+                {aboutT.headline}
               </h3>
 
               <div className="mt-8 space-y-5 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
-                <p>
-                  I’m a Full Stack Developer with a deep interest in backend architecture, distributed workflows, and scalable systems. I concentrate on projects where engineering rigor solves authentic operational challenges and where granular architectural details matter.
-                </p>
-                <p>
-                  I construct complete applications spanning enterprise authentication, distributed databases, resilient APIs, and reactive interfaces. My approach prioritizes continuous refinement, deterministic testing, and pushing codebases to enterprise production quality.
-                </p>
+                <p>{aboutT.paragraph1}</p>
+                <p>{aboutT.paragraph2}</p>
               </div>
             </div>
 
             {/* Structural Technical Highlights (Clean Index Rules, No Cards) */}
             <div className="mt-12 sm:mt-16 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
               <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block mb-6">
-                [PILLARS OF EXECUTION]
+                {aboutT.pillarsHeader}
               </span>
 
               <div className="divide-y divide-neutral-200/70 dark:divide-neutral-800/70">
-                {highlights.map((h) => (
+                {aboutT.highlights?.map((h, i) => (
                   <div
                     key={h.title}
                     className="group py-6 first:pt-2 flex flex-col sm:flex-row sm:items-start justify-between gap-4 transition-colors duration-300"
@@ -134,7 +115,7 @@ const About = () => {
                         {h.index}
                       </span>
                       <div className="p-2 bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 group-hover:border-neutral-400 dark:group-hover:border-neutral-600 transition-colors">
-                        {h.icon}
+                        {icons[i] || <Code2 className="w-4 h-4" />}
                       </div>
                       <span className="font-mono text-sm font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 group-hover:text-black dark:group-hover:text-white transition-colors">
                         {h.title}
@@ -155,7 +136,7 @@ const About = () => {
                 href="#projects"
                 className="group inline-flex items-center gap-3 px-6 py-3.5 text-xs sm:text-sm font-mono uppercase tracking-wider bg-neutral-950 text-neutral-50 hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98]"
               >
-                <span>View My Projects</span>
+                <span>{aboutT.ctaProjects}</span>
                 <ArrowUpRight size={15} className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>

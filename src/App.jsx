@@ -1,8 +1,13 @@
-import React from 'react';
-import AppRouter from './utils/AppRouter';
+import React from "react";
+import AppRouter from "./utils/AppRouter";
+import { LanguageProvider } from "./context/LanguageContext";
 
 function App() {
-  return <AppRouter />;
+  return (
+    <LanguageProvider>
+      <AppRouter />
+    </LanguageProvider>
+  );
 }
 
 export default App;

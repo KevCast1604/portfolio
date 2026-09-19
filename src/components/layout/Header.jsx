@@ -1,23 +1,30 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Menu, X, ArrowUpRight, CornerDownRight, Github, Linkedin } from "lucide-react";
-
-const NAV_ITEMS = [
-  { id: "about", label: "About", index: "01" },
-  { id: "experience", label: "Experience", index: "02" },
-  { id: "skills", label: "Skills", index: "03" },
-  { id: "projects", label: "Projects", index: "04" },
-  { id: "contact", label: "Contact", index: "05" },
-];
+import { Menu, X, ArrowUpRight, CornerDownRight, Github, Linkedin, Globe } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { language, toggleLanguage, t } = useLanguage();
+  const navT = t("nav");
+  const heroT = t("hero");
+
+  const navItems = useMemo(
+    () => [
+      { id: "about", label: navT.about || "About", index: "01" },
+      { id: "experience", label: navT.experience || "Experience", index: "02" },
+      { id: "skills", label: navT.skills || "Skills", index: "03" },
+      { id: "projects", label: navT.projects || "Projects", index: "04" },
+      { id: "contact", label: navT.contact || "Contact", index: "05" },
+    ],
+    [navT]
+  );
 
   const navRef = useRef(null);
   const mobilePanelRef = useRef(null);
 
-  const sectionIds = useMemo(() => ["hero", ...NAV_ITEMS.map((item) => item.id)], []);
+  const sectionIds = useMemo(() => ["hero", ...navItems.map((item) => item.id)], [navItems]);
 
   // 1) Throttled scroll state detection
   useEffect(() => {
@@ -38,7 +45,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // 2) Active section tracking via IntersectionObserver
+  // 2) IntersectionObserver for active section tracking
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -53,7 +60,7 @@ const Header = () => {
       {
         root: null,
         rootMargin: "-90px 0px -55% 0px",
-        threshold: [0.1, 0.25, 0.5, 0.75],
+        threshold: [0.15, 0.35, 0.65],
       }
     );
 
@@ -65,7 +72,7 @@ const Header = () => {
     return () => observer.disconnect();
   }, [sectionIds]);
 
-  // 3) Accessibility: Escape key, outside clicks & body scroll lock for mobile menu
+  // 3) Accessibility: Escape to close + outside click handling
   useEffect(() => {
     if (!isOpen) {
       document.body.style.overflow = "";
@@ -81,14 +88,10 @@ const Header = () => {
     const onPointerDown = (e) => {
       const panel = mobilePanelRef.current;
       const nav = navRef.current;
-
       if (!panel || !nav) return;
+
       const target = e.target;
-
-      const clickedInsidePanel = panel.contains(target);
-      const clickedInsideNav = nav.contains(target);
-
-      if (!clickedInsidePanel && !clickedInsideNav) {
+      if (!panel.contains(target) && !nav.contains(target)) {
         setIsOpen(false);
       }
     };
@@ -105,18 +108,14 @@ const Header = () => {
 
   const handleNavClick = (e, id) => {
     e.preventDefault();
-
-    if (id === "hero") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setIsOpen(false);
-      return;
-    }
-
     const element = document.getElementById(id);
+
     if (element) {
-      const headerOffset = 76;
+      const headerOffset = 80;
       const y = element.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
+    } else if (id === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     setIsOpen(false);
@@ -125,22 +124,22 @@ const Header = () => {
   return (
     <header
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         scrolled
-          ? "bg-[#fafaf9]/92 dark:bg-[#08080a]/92 backdrop-blur-md border-b border-neutral-200/80 dark:border-neutral-800/80 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]"
-          : "bg-[#fafaf9]/65 dark:bg-[#08080a]/65 backdrop-blur-xs border-b border-neutral-200/40 dark:border-neutral-800/40"
+          ? "bg-[#fafaf9]/90 dark:bg-[#08080a]/90 backdrop-blur-md border-b border-neutral-200/80 dark:border-neutral-800/80 py-3.5"
+          : "bg-transparent py-5 sm:py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24">
-        <div className="flex items-center justify-between h-18 sm:h-20">
-          {/* Brand Identity / Architectural Monogram */}
+        <div className="flex items-center justify-between">
+          {/* Identity Monogram */}
           <a
             href="#hero"
             onClick={(e) => handleNavClick(e, "hero")}
-            className="group flex items-center gap-3 select-none py-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400"
-            aria-label="Kevin Castañeda — Return to top"
+            className="group flex items-center gap-3 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400"
+            aria-label="Kevin Castañeda — Return to apex"
           >
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -149,9 +148,6 @@ const Header = () => {
                 Kevin Castañeda
               </span>
             </div>
-            <span className="hidden md:inline-block font-mono text-[10px] tracking-widest uppercase text-neutral-400 dark:text-neutral-500 border-l border-neutral-200 dark:border-neutral-800 pl-3">
-              LATAM / REMOTE
-            </span>
           </a>
 
           {/* Desktop Navigation (Editorial Ledger Index) */}
@@ -159,7 +155,7 @@ const Header = () => {
             className="hidden md:flex items-center gap-1 lg:gap-2"
             aria-label="Main Navigation"
           >
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const isActive = activeSection === item.id;
 
               return (
@@ -191,14 +187,27 @@ const Header = () => {
             })}
           </nav>
 
-          {/* Primary Action Button (Matches Hero CTA) */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Actions & Language Switcher */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 font-mono text-xs uppercase tracking-wider border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors cursor-pointer"
+              aria-label="Toggle language"
+            >
+              <Globe size={12} className="opacity-60" />
+              <span className={language === "en" ? "font-bold text-black dark:text-white" : "opacity-40"}>EN</span>
+              <span className="opacity-25">/</span>
+              <span className={language === "es" ? "font-bold text-black dark:text-white" : "opacity-40"}>ES</span>
+            </button>
+
+            {/* Primary Action Button */}
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact")}
               className="group inline-flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-wider border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-950 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-950 hover:border-neutral-950 dark:hover:border-neutral-100 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] focus:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400"
             >
-              <span>Initiate Contact</span>
+              <span>{heroT.ctaContact || "Contact"}</span>
               <ArrowUpRight
                 size={13}
                 className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -206,8 +215,17 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="flex items-center md:hidden">
+          {/* Mobile Menu Toggle & Mobile Language */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={toggleLanguage}
+              className="p-2 text-neutral-700 dark:text-neutral-300 font-mono text-xs uppercase"
+              aria-label="Toggle language"
+            >
+              <span className={language === "en" ? "font-bold" : "opacity-40"}>EN</span>/
+              <span className={language === "es" ? "font-bold" : "opacity-40"}>ES</span>
+            </button>
+
             <button
               onClick={() => setIsOpen((prev) => !prev)}
               className="p-2 -mr-2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50 transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400"
@@ -246,11 +264,11 @@ const Header = () => {
         >
           <div className="max-w-7xl mx-auto px-6 sm:px-12 py-7">
             <div className="font-mono text-[10px] uppercase tracking-widest text-neutral-400 dark:text-neutral-500 pb-3 border-b border-neutral-200/60 dark:border-neutral-800/60">
-              Navigation Index
+              {navT.indexTitle || "Navigation Index"}
             </div>
 
             <div className="divide-y divide-neutral-200/60 dark:divide-neutral-800/60">
-              {NAV_ITEMS.map((item) => {
+              {navItems.map((item) => {
                 const isActive = activeSection === item.id;
 
                 return (
@@ -258,29 +276,22 @@ const Header = () => {
                     key={item.id}
                     href={`#${item.id}`}
                     onClick={(e) => handleNavClick(e, item.id)}
-                    className="group flex items-center justify-between py-3.5 transition-colors duration-200"
+                    className={`flex items-center justify-between py-4 text-xs font-mono uppercase tracking-wider transition-colors duration-200 ${
+                      isActive
+                        ? "text-neutral-950 dark:text-neutral-50 font-medium"
+                        : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
+                    }`}
                   >
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs text-neutral-400 dark:text-neutral-500">
-                        {item.index}
-                      </span>
-                      <span
-                        className={`font-mono text-sm tracking-tight transition-colors duration-200 ${
-                          isActive
-                            ? "text-neutral-950 dark:text-neutral-50 font-semibold"
-                            : "text-neutral-600 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white"
-                        }`}
-                      >
-                        {item.label}
-                      </span>
+                      <span className="text-neutral-400 dark:text-neutral-500">{item.index}</span>
+                      <span>{item.label}</span>
                     </div>
-
                     <CornerDownRight
                       size={14}
-                      className={`transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      className={`transition-all duration-300 ${
                         isActive
-                          ? "text-neutral-950 dark:text-neutral-50 translate-x-0.5"
-                          : "text-neutral-300 dark:text-neutral-600 group-hover:text-neutral-800 dark:group-hover:text-neutral-200 group-hover:translate-x-1"
+                          ? "opacity-100 text-neutral-950 dark:text-neutral-50 translate-x-0"
+                          : "opacity-0 -translate-x-1"
                       }`}
                     />
                   </a>
@@ -288,39 +299,31 @@ const Header = () => {
               })}
             </div>
 
-            {/* Mobile Footer Meta & CTAs */}
-            <div className="mt-6 pt-5 border-t border-neutral-200/80 dark:border-neutral-800/80 flex flex-col gap-4">
-              <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "contact")}
-                className="inline-flex items-center justify-center gap-2.5 px-5 py-3 text-xs font-mono uppercase tracking-wider bg-neutral-950 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-950 transition-transform active:scale-[0.98]"
-              >
-                <span>Initiate Contact</span>
-                <ArrowUpRight size={14} />
-              </a>
+            {/* Mobile Footer Meta */}
+            <div className="mt-8 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60 flex items-center justify-between text-neutral-500 dark:text-neutral-400">
+              <span className="font-mono text-[11px] uppercase tracking-wider">
+                {navT.channelTitle || "TRANSMISSION CHANNEL"}
+              </span>
 
-              <div className="flex items-center justify-between text-neutral-400 dark:text-neutral-500 font-mono text-[11px] pt-1">
-                <div className="flex items-center gap-4">
-                  <a
-                    href="https://github.com/KevCast1604"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-black dark:hover:text-white transition-colors p-1"
-                    aria-label="GitHub profile"
-                  >
-                    <Github size={16} />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/kevin-alexander-casta%C3%B1eda-llanos-712368307/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-black dark:hover:text-white transition-colors p-1"
-                    aria-label="LinkedIn profile"
-                  >
-                    <Linkedin size={16} />
-                  </a>
-                </div>
-                <span className="tracking-widest">ID: KC_1604</span>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://github.com/KevCast1604"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                  <Github size={16} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/kevin-alexander-casta%C3%B1eda-llanos-712368307/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                  <Linkedin size={16} />
+                </a>
               </div>
             </div>
           </div>

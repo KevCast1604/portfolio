@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Github, Linkedin, ArrowUpRight, Copy, Check, Terminal, CornerDownRight, MoveDown } from "lucide-react";
+import { Github, Linkedin, ArrowUpRight, Copy, Check, CornerDownRight, MoveDown, Globe } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Hero = () => {
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
+  const heroT = t("hero");
 
   useEffect(() => {
     setMounted(true);
@@ -45,13 +48,7 @@ const Hero = () => {
             mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
           }`}
         >
-          <div className="flex items-center gap-2.5">
-            <span className="relative flex h-2 w-2">
-            </span>
-          </div>
-          <div className="text-neutral-400 my-4 dark:text-neutral-500">
-            KEVIN CASTAÑEDA — LATAM / REMOTE
-          </div>
+        
         </div>
 
         {/* Main Asymmetric Typographical Statement */}
@@ -62,14 +59,14 @@ const Hero = () => {
             }`}
           >
             <span className="text-xs sm:text-sm font-mono tracking-widest text-neutral-500 dark:text-neutral-400 uppercase mb-3 sm:mb-4 block">
-              // WEB DEVELOPER & AI ENGINEER
+              {heroT.tagline}
             </span>
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.75rem] font-medium tracking-[-0.035em] leading-[0.98] text-neutral-950 dark:text-neutral-50">
-              ENGINEERING <br />
+              {heroT.headlineLine1} <br />
               <span className="italic font-serif font-normal text-neutral-600 dark:text-neutral-400">
-                autonomous systems
+                {heroT.headlineLine2}
               </span> <br />
-              & RESILIENT BACKENDS.
+              {heroT.headlineLine3}
             </h1>
           </div>
         </div>
@@ -85,45 +82,26 @@ const Hero = () => {
           >
             <div className="space-y-6">
               <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 dark:text-neutral-500 block">
-                [01] CORE CAPABILITIES
+                {heroT.disciplinesHeader}
               </span>
 
               <div className="space-y-4">
-                <div className="group border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3.5 transition-colors duration-300">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-mono text-sm tracking-tight text-neutral-800 dark:text-neutral-200 group-hover:text-black dark:group-hover:text-white transition-colors">
-                      01 / AGENTIC SYSTEMS
-                    </h3>
-                    <CornerDownRight size={14} className="text-neutral-400 group-hover:translate-x-1 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                {heroT.disciplines?.map((discipline, idx) => (
+                  <div
+                    key={idx}
+                    className="group border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3.5 transition-colors duration-300"
+                  >
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-mono text-sm tracking-tight text-neutral-800 dark:text-neutral-200 group-hover:text-black dark:group-hover:text-white transition-colors">
+                        {discipline.title}
+                      </h3>
+                      <CornerDownRight size={14} className="text-neutral-400 group-hover:translate-x-1 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                    </div>
+                    <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400 font-sans leading-relaxed">
+                      {discipline.desc}
+                    </p>
                   </div>
-                  <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400 font-sans leading-relaxed">
-                    Specialized in RAG architectures, Generative AI capabilities, and autonomous Agentic AI workflow orchestration.
-                  </p>
-                </div>
-
-                <div className="group border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3.5 transition-colors duration-300">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-mono text-sm tracking-tight text-neutral-800 dark:text-neutral-200 group-hover:text-black dark:group-hover:text-white transition-colors">
-                      02 / DISTRIBUTED ARCHITECTURE
-                    </h3>
-                    <CornerDownRight size={14} className="text-neutral-400 group-hover:translate-x-1 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                  </div>
-                  <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400 font-sans leading-relaxed">
-                    Scalable system design leveraging modular architecture, hexagonal architecture, and vertical slicing patterns.
-                  </p>
-                </div>
-
-                <div className="group border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3.5 transition-colors duration-300">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-mono text-sm tracking-tight text-neutral-800 dark:text-neutral-200 group-hover:text-black dark:group-hover:text-white transition-colors">
-                      03 / FULL-STACK APPLICATION
-                    </h3>
-                    <CornerDownRight size={14} className="text-neutral-400 group-hover:translate-x-1 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                  </div>
-                  <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400 font-sans leading-relaxed">
-                    Engineering end-to-end reactive systems with Python, React, Tailwind CSS, TypeScript, and modern tooling.
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -136,7 +114,7 @@ const Hero = () => {
           >
             <div>
               <p className="text-base sm:text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-2xl font-normal">
-                I build autonomous agent frameworks and scalable backend services. Bridging low-level system rigor with modern intelligence to transform ambiguous complexity into resilient, production-ready software.
+                {heroT.bio}
               </p>
             </div>
 
@@ -147,17 +125,17 @@ const Hero = () => {
               <div className="flex flex-wrap items-center gap-3.5">
                 <button
                   onClick={() => scrollTo("projects")}
-                  className="group relative inline-flex items-center gap-2.5 px-6 py-3.5 text-xs sm:text-sm font-mono uppercase tracking-wider bg-neutral-950 text-neutral-50 hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98]"
+                  className="group relative inline-flex items-center gap-2.5 px-6 py-3.5 text-xs sm:text-sm font-mono uppercase tracking-wider bg-neutral-950 text-neutral-50 hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] cursor-pointer"
                 >
-                  <span>Explore Projects</span>
+                  <span>{heroT.ctaProjects}</span>
                   <ArrowUpRight size={15} className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
 
                 <button
                   onClick={() => scrollTo("contact")}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 text-xs sm:text-sm font-mono uppercase tracking-wider border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 text-xs sm:text-sm font-mono uppercase tracking-wider border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] cursor-pointer"
                 >
-                  <span>Initiate Contact</span>
+                  <span>{heroT.ctaContact}</span>
                 </button>
               </div>
 
@@ -185,13 +163,13 @@ const Hero = () => {
 
                 <button
                   onClick={copyEmail}
-                  className="relative group inline-flex items-center gap-1.5 p-2 font-mono text-xs text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+                  className="relative group inline-flex items-center gap-1.5 p-2 font-mono text-xs text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer"
                   aria-label="Copy email to clipboard"
                 >
                   {copied ? (
                     <>
                       <Check size={16} className="text-emerald-500" />
-                      <span className="text-[11px] font-mono text-emerald-500 font-semibold">COPIED</span>
+                      <span className="text-[11px] font-mono text-emerald-500 font-semibold">{heroT.emailCopied}</span>
                     </>
                   ) : (
                     <>
@@ -207,7 +185,7 @@ const Hero = () => {
           </div>
 
         </div>
-      </div>     
+      </div>
     </section>
   );
 };
